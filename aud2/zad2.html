@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aud2 exercises</title>
+    <script rel="stylesheet" type="text/javascript">
+        let year = parseInt(prompt("Vnesete ja godinata:"));
+
+        if (!isNaN(year)) {
+            if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0)
+                document.write(`${year} e prestapna godina`);
+            else
+                document.write(`${year} ne e prestapna godina`);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

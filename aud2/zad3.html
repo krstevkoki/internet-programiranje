@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aud2 exercises</title>
+    <script rel="stylesheet" type="text/javascript">
+        let x = parseInt(prompt("X:"));
+        let y = parseInt(prompt("Y:"));
+
+        if (!isNaN(x) && !isNaN(y)) {
+            if (x > 0) {
+                if (y > 0)
+                    document.write("Prv kvadrant.");
+                else if (y < 0)
+                    document.write("Cetvrt kvadrant.");
+                else
+                    document.write("Pozitivna x-oska");
+            } else if (x < 0) {
+                if (y > 0)
+                    document.write("Vtor kvadrant.");
+                else if (y < 0)
+                    document.write("Treti kvadrant.");
+                else
+                    document.write("Negativna x-oska");
+            } else {
+                if (y > 0)
+                    document.write("Pozitivna y-oska");
+                else if (y < 0)
+                    document.write("Negativna y-oska");
+                else
+                    document.write("Koordinaten pocetok");
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
