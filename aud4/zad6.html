@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aud4 exercises</title>
+    <script rel="script" type="text/javascript">
+        console.log(textTruncate('We are doing JS string exercises.'));
+        console.log(textTruncate('We are doing JS string exercises.', 19));
+        console.log(textTruncate('We are doing JS string exercises.', 15, '!!'));
+
+        function textTruncate(str, maxLength, truncateStr) {
+            if (truncateStr === undefined)
+                truncateStr = '...';
+            if (maxLength === undefined)
+                maxLength = 100;
+            if (!(str.length > maxLength))
+                return str;
+
+            return str.slice(0, maxLength - truncateStr.length) + truncateStr;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

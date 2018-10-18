@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aud3 exercises</title>
+    <style rel="stylesheet" type="text/css">
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrapper {
+            display: flex;
+            margin-bottom: 5px;
+        }
+
+        label {
+            flex-basis: 80px;
+            cursor: pointer;
+        }
+    </style>
+    <script rel="script" type="text/javascript">
+        window.onload = () => {
+            let button = document.querySelector(".container .wrapper button#calculate");
+            button.addEventListener("click", () => {
+                let radius = Math.abs(document.querySelector(".container .wrapper input#radius").value);
+                document.querySelector(".container .wrapper input#volume").value
+                    = ((4 / 3.0) * Math.PI * Math.pow(radius, 3)).toFixed(3);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <span style="margin-bottom: 10px">Input radius value and get the volume of a sphere.</span>
+
+        <div class="wrapper">
+            <label for="radius">Radius:</label>
+            <input id="radius" name="radius" type="text" placeholder="Enter radius..."/>
+        </div>
+
+        <div class="wrapper">
+            <label for="volume">Volume:</label>
+            <input id="volume" name="volume" type="text"
+                   placeholder="Calculate me..." readonly style="cursor: not-allowed;"/>
+        </div>
+
+        <div class="wrapper">
+            <button id="calculate" type="button" style="cursor:pointer;">Calculate</button>
+        </div>
+    </div>
+</body>
+</html>

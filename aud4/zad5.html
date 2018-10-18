@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aud4 exercises</title>
+    <script rel="script" type="text/javascript">
+        console.log(insert('We are doing some exercises.'));
+        console.log(insert('We are doing some exercises.', 'JavaScript '));
+        console.log(insert('We are doing some exercises.', 'JavaScript ', 18));
+
+        function insert(str, word, position) {
+            if (position === undefined)
+                position = 0;
+            if (word === undefined)
+                return str;
+
+            return str.slice(0, position) + word + str.slice(position)
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

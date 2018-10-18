@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aud3 exercises</title>
+    <script rel="script" type="text/javascript">
+        function getOptions() {
+            let list = document.querySelector("body form select#mySelect");
+            for (let i = 0; i < list.options.length; ++i) {
+                console.log(list.options[i].text);
+            }
+            console.log(list.options.length);
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <label for="mySelect">Select your favorite color:</label>
+        <select id="mySelect">
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="white">White</option>
+        </select>
+
+        <input type="button" onclick="getOptions()" value="Count and Output all items">
+    </form>
+</body>
+</html>

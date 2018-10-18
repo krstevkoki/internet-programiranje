@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aud3 exercises</title>
+    <script rel="script" type="text/javascript">
+        function getAttributes() {
+            let element = document.querySelector("body p a");
+            console.log(`${element.href} ${element.hreflang} ${element.rel} ${element.target} ${element.type}`);
+        }
+    </script>
+</head>
+<body>
+    <p>
+        <a href="https://www.w3schools.com" id="finki" type="text/html" hreflang="en-us" rel="nofollow">
+            finki
+        </a>
+    </p>
+    <button onclick="getAttributes()">Click here to get attributes value</button>
+</body>
+</html>

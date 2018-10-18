@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aud3 exercises</title>
+    <script rel="script" type="text/javascript">
+        let num = Math.floor((Math.random() * 100) + 1);
+        console.log(`${num}, ${isPrime(num)}`);
+
+        function isPrime(num) {
+            if (num === 1)
+                return false;
+            if (num <= 3)
+                return true;
+
+            for (let i = 2; i < num; ++i) {
+                if (num % i === 0)
+                    return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aud4 exercises</title>
+    <script rel="script" type="text/javascript">
+        console.log(stringParameterize("Robin Singh from USA."));
+        console.log(stringParameterize("Robin-Singh from USA."));
+
+        function stringParameterize(str) {
+            return str.toLowerCase().replace(/[^a-z0-9-\s]/gi, '').replace(/\s/gi, "-");
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

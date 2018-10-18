@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aud3 exercises</title>
+    <script rel="stylesheet" type="text/javascript">
+
+        function highlight(items) {
+            for (let i = 0; i < items.length; ++i) {
+                console.log(items[i]);
+                items[i].style.color = "#2a8b13";
+            }
+        }
+
+        function returnToNormal(items) {
+            for (let i = 0; i < items.length; ++i) {
+                items[i].style.color = "#000";
+            }
+        }
+
+        function getBoldItems() {
+            return document.getElementsByTagName("strong");
+        }
+    </script>
+</head>
+<body>
+    <p>
+        [<a href="#" onmouseover="highlight(getBoldItems())" onmouseout="returnToNormal(getBoldItems())">
+        On mouse over here bold words of the following paragraph will be highlighted
+        </a>]
+    </p>
+
+    <p>
+        <strong>We</strong> have just started <strong>this</strong> section for the users (<strong>beginner</strong> to
+        intermediate) who
+        <strong>want</strong> to work with <strong>various</strong> JavaScript <strong>problems</strong> and write scripts
+        online to
+        <strong>test</strong> their JavaScript <strong>skill</strong>.
+    </p>
+</body>
+</html>

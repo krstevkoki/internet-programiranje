@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aud4 exercises</title>
+    <script rel="script" type="text/javascript">
+        console.log(removeFirstOccurrence("The quick brown fox jumps over the lazy dog", 'the'));
+        console.log(removeFirstOccurrence("The quick brown fox the over the lazy dog", 'the'));
+        console.log(removeFirstOccurrence("The quick brown fox the over the lazy dog", 'The'));
+
+        function removeFirstOccurrence(str, word) {
+            if (word === undefined)
+                return str;
+            if (!(str.includes(word)))
+                return str;
+
+            return str.slice(0, str.indexOf(word)) + str.slice((str.indexOf(word) + 1) + word.length)
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
