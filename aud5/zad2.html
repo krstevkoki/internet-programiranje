@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aud5 exercises</title>
+    <style rel="stylesheet" type="text/css">
+        .wrapper {
+            width: 25%;
+        }
+
+        .row {
+            display: flex;
+            justify-content: flex-start;
+            padding: .5em;
+        }
+
+        .row > label {
+            flex: 0.7;
+            font-weight: bold;
+            padding: .3em 0 .3em 0;
+        }
+
+        .row > label, .row > button, .row select {
+            cursor: pointer;
+        }
+
+        .row > input, .row > button {
+            flex: 2;
+        }
+
+        .row > input, .row > button {
+            padding: .3em;
+        }
+
+        table, th, td {
+            width: 100%;
+            border: 1px solid #000;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th {
+            width: 100px;
+        }
+    </style>
+    <script rel="script" type="text/javascript">
+        function addAuthor() {
+            let tbody = document.querySelector("table#project-list tbody");
+            let author = document.getElementById('author').value;
+            let projects = document.getElementById('projects').value;
+            let cost = document.getElementById('cost').value;
+
+            if (author === "" || projects === "" || cost === "") {
+                alert("Сите полиња се задолжителни!");
+                return;
+            }
+
+            let row = tbody.insertRow();
+            row.insertCell().innerHTML = author;
+            row.insertCell().innerHTML = projects;
+            let costCell = row.insertCell();
+            costCell.setAttribute('class', 'cost');
+            costCell.innerHTML = cost;
+            row.insertCell().innerHTML = "<button class='remove-button' " +
+                "type='button' onclick='removeRow(this)'>Remove</button>";
+
+            document.getElementById('author').value
+                = document.getElementById('projects').value
+                = document.getElementById('cost').value = "";
+            total()
+        }
+
+        function removeRow(button) {
+            //         td         tr
+            button.parentNode.parentNode.remove();
+            total();
+        }
+
+        function total() {
+            let items = document.getElementsByClassName('cost');
+            let sum = 0;
+
+            for (let i = 0; i < items.length; ++i) {
+                let value = parseInt(items[i].innerHTML);
+                if (value)
+                    sum += value;
+            }
+
+            document.getElementById('sum').innerHTML = sum.toString();
+        }
+    </script>
+</head>
+<body>
+    <h2>Project details</h2>
+    <div class="wrapper">
+        <div class="row">
+            <label for="author">Author:</label>
+            <input id="author" name="author" type="text">
+        </div>
+        <div class="row">
+            <label for="projects">Project:</label>
+            <input id="projects" name="projects" type="text">
+        </div>
+        <div class="row">
+            <label for="cost">Cost:</label>
+            <input id="cost" name="cost" type="text">
+        </div>
+        <div class="row">
+            <button id="add-button" type="button" onclick="addAuthor();">Add</button>
+        </div>
+        <h2>Project list - <span id="sum">0</span></h2>
+        <table id="project-list">
+            <thead>
+            <tr>
+                <th>Author</th>
+                <th>Projects</th>
+                <th colspan="2">Cost</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+</html>

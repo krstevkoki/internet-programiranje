@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aud5 exercises</title>
+    <style rel="stylesheet" type="text/css">
+        .wrapper {
+            width: 30%;
+        }
+
+        .row {
+            display: flex;
+            justify-content: flex-start;
+            padding: .5em;
+        }
+
+        .inner-row {
+            display: flex;
+        }
+
+        .row > label {
+            flex: 1;
+            font-weight: bold;
+            padding: .3em 0 .3em 0;
+        }
+
+        .row > label, .row > button, .row select {
+            cursor: pointer;
+        }
+
+        .row > input:not(#result-message), .row > .inner-row {
+            flex: 2;
+        }
+
+        .row > input, .row > button {
+            padding: .3em;
+        }
+    </style>
+    <script rel="script" type="text/javascript">
+        function sendData() {
+            let firstName = document.querySelector(".row > input#ime").value;
+            let lastName = document.querySelector(".row > input#prezime").value;
+            let email = document.querySelector(".row > input#email").value;
+
+            if (firstName !== "" && lastName !== "" && email !== "") {
+                if (confirm(`Господине ${firstName} ${lastName} дали сте сигурни?`))
+                    document.querySelector(".row > input#result-message").value = "Податоците се успешно испратени";
+                else
+                    alert("Податоците не се успешно испратени!");
+            } else {
+                alert("Сите полиња се задолжителни!");
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>Форма за контакт</h1>
+<div class="wrapper">
+    <div class="row">
+        <label for="ime">Име:</label>
+        <input id="ime" name="firstName" type="text">
+    </div>
+    <div class="row">
+        <label for="prezime">Презиме:</label>
+        <input id="prezime" name="lastName" type="text">
+    </div>
+    <div class="row">
+        <label for="email">E-mail:</label>
+        <input id="email" name="email" type="text">
+    </div>
+    <div class="row">
+        <label for="vozrast">Возраст:</label>
+        <div class="inner-row">
+            <select id="vozrast">
+                <option value="18">18</option>
+                <option value="19" selected>19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <button id="send-button" type="button" onclick="sendData();">Прати</button>
+    </div>
+    <div class="row">
+        <input id="result-message" type="text" disabled>
+    </div>
+</div>
+</body>
+</html>

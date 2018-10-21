@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aud5 exercises</title>
+    <style rel="stylesheet" type="text/css">
+        .wrapper {
+            width: 25%;
+        }
+
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .row {
+            display: flex;
+            justify-content: flex-start;
+            padding: .5em;
+        }
+
+        .row > label {
+            flex: 2;
+            font-weight: bold;
+            padding: .3em 0 .3em 0;
+        }
+
+        .row > label, .row > button, .row select {
+            cursor: pointer;
+        }
+
+        .row > input, .row > button, .row > .inner-row {
+            flex: 2;
+        }
+
+        .row > input, .row > button {
+            padding: .3em;
+        }
+    </style>
+    <script rel="script" type="text/javascript">
+        function generate() {
+            let numElements = parseInt(document.getElementById('number').value);
+            let type = document.getElementById('type').value;
+            let container = document.getElementById('container');
+            console.log(numElements);
+
+            if (!numElements) {
+                alert("Сите полиња се задолжителни!");
+                return;
+            }
+
+            container.innerHTML = "";  // remove previously created elements
+
+            for (let i = 0; i < numElements; i++) {
+                let inputElement = document.createElement('input');
+                inputElement.setAttribute('type', type);
+                if (type === "radio")
+                    inputElement.setAttribute('name', "group");
+
+                let spanElement = document.createElement('span');
+                spanElement.innerHTML = i;
+
+                container.appendChild(inputElement);
+                container.appendChild(spanElement);
+            }
+
+            document.getElementById('number').value = "";
+        }
+    </script>
+</head>
+<body>
+<h1>Checkbox/radio generator</h1>
+<div class="wrapper">
+    <div class="row">
+        <label for="number">Number of elements:</label>
+        <input id="number" name="number" type="number" min="1">
+    </div>
+    <div class="row">
+        <label for="type">Type:</label>
+        <div class="inner-row">
+            <select id="type">
+                <option value="checkbox">Checkbox</option>
+                <option value="radio">Radio</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <button id="generate-button" type="button" onclick="generate()">Add</button>
+    </div>
+    <div id="container"></div>
+</div>
+</body>
+</html>
