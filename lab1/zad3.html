@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 3</title>
+    <script rel="script" type="text/javascript">
+        let userInput = prompt('Please enter words');
+        if (userInput !== null) {
+            let words = userInput.trim().split(/\s+/);
+            let max_length = Number.MIN_SAFE_INTEGER;
+            let max_index = -1;
+
+            for (let i = 0; i < words.length; ++i) {
+                if (words[i].length > /*>=*/ max_length) {
+                    max_length = words[i].length;
+                    max_index = i;
+                }
+            }
+            alert(words[max_index]);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

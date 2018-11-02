@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 1</title>
+    <script rel="script" type="text/javascript">
+        let userInput = prompt('Please enter a number (100-999)');
+        if (userInput !== null) {
+            if (userInput.trim().length !== 3) {
+                alert("The number is not between 100-999");
+            }
+            else {
+                if (parseInt(userInput.trim().charAt(0)) === parseInt(userInput.trim().charAt(2)))
+                    alert(`${userInput} is palindrome`);
+                else
+                    alert(`${userInput} is not palindrome`);
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

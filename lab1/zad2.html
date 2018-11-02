@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 2</title>
+    <script rel="script" type="text/javascript">
+        let userInput = prompt('Please enter tel. number (XXYYYZZZ - format)');
+        if (userInput !== null && userInput.trim().length === 8 && !isNaN(parseInt(userInput.trim()))) {
+            let operatorCode = userInput.trim().slice(0, 2);
+            let formatted = '';
+            let operator;
+
+            for (let i = -1; i < userInput.trim().length; ++i) {
+                if (i === -1) {  // special case: insert '0' at the beginning of the number
+                    formatted += '0';
+                }
+                else {
+                    if (i === 2) // special case: insert '/' after tel. operator code
+                        formatted += `/${userInput.trim().charAt(i)}`;
+                    else if (i === 5)  // special case: insert '-' in the middle of the number
+                        formatted += `-${userInput.trim().charAt(i)}`;
+                    else
+                        formatted += userInput.trim().charAt(i);
+                }
+            }
+
+            if (operatorCode === '70' || operatorCode === '71' || operatorCode === '72')
+                operator = 'T-mobile';
+            else if (operatorCode === '75' || operatorCode === '76')
+                operator = 'One';
+            else if (operatorCode === '77' || operatorCode === '78')
+                operator = 'Vip';
+
+            alert(`${formatted} - ${operator}`);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 4</title>
+    <script rel="script" type="text/javascript">
+        let num1 = parseInt(prompt('Please enter the first number'));
+        let num2 = parseInt(prompt('Please enter the second number'));
+        let num3 = parseInt(prompt('Please enter the third number'));
+
+        if (!isNaN(num1) && !isNaN(num2) && !isNaN(num3)) {
+            let result = (num1 * num2 * num3).toString();
+            if (result.charAt(0) !== '-')
+                alert('+');
+            else
+                alert('-');
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
