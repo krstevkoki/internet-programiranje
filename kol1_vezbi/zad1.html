@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style rel="stylesheet" type="text/css">
+        .row, .component {
+            margin: 5px 0;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
+    <script rel="script" type="text/javascript">
+        function addComponent() {
+            let components = document.getElementById('components');
+            let component = document.createElement('div');
+            component.classList.add('component');
+            component.innerHTML = `
+                <input class="input-numbers" name="input-numbers" type="text" placeholder="Enter a number...">
+                <button class="remove-button" type="button" name="remove-button"
+                        onclick="removeComponent(this)">Избриши</button>
+            `;
+            components.appendChild(component);
+        }
+
+        function removeComponent(button) {
+            button.parentNode.remove();
+            // calculate()
+        }
+
+        function calculate() {
+            let inputs = document.getElementsByClassName('input-numbers');
+            let sum = 0.0;
+            let max = Number.MIN_SAFE_INTEGER;
+            let min = Number.MAX_SAFE_INTEGER;
+
+            for (let i = 0; i < inputs.length; ++i) {
+                let value = parseInt(inputs[i].value);
+                sum += value;
+                if (value > max)
+                    max = value;
+                if (value < min)
+                    min = value;
+            }
+
+            document.getElementById('average').innerHTML = !isNaN(sum) && sum !== 0 ? sum / inputs.length : "/";
+            document.getElementById('max').innerHTML = max !== Number.MIN_SAFE_INTEGER ? max : "/";
+            document.getElementById('min').innerHTML = min !== Number.MAX_SAFE_INTEGER ? min : "/";
+        }
+    </script>
+</head>
+<body>
+    <div id="components">
+        <div class="component">
+            <input class="input-numbers" name="input-numbers" type="text" placeholder="Enter a number...">
+            <button class="remove-button" type="button" name="remove-button"
+                    onclick="removeComponent(this)">Избриши
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <button id="add-button" type="button" name="add-button" onclick="addComponent()">Додади</button>
+    </div>
+    <div class="row">
+        <button id="calculate-button" type="button" name="calculate-button" onclick="calculate()">Пресметај</button>
+    </div>
+    <div class="row">
+        <p>Просек:&nbsp;<span id="average">/</span></p>
+        <p>Максимум:&nbsp;<span id="max">/</span></p>
+        <p>Минимум:&nbsp;<span id="min">/</span></p>
+    </div>
+</body>
+</html>
