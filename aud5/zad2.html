@@ -56,14 +56,21 @@
                 return;
             }
 
+            if (isNaN(parseFloat(cost))) {
+                alert("Цената не е број");
+                return;
+            }
+
             let row = tbody.insertRow();
             row.insertCell().innerHTML = author;
             row.insertCell().innerHTML = projects;
             let costCell = row.insertCell();
-            costCell.setAttribute('class', 'cost');
+            // costCell.setAttribute('class', 'cost');
+            costCell.classList.add('cost');
             costCell.innerHTML = cost;
-            row.insertCell().innerHTML = "<button class='remove-button' " +
-                "type='button' onclick='removeRow(this)'>Remove</button>";
+            row.insertCell().innerHTML = `
+                <button class="remove-button" type="button" onclick="removeRow(this)">Remove</button>
+            `;
 
             document.getElementById('author').value
                 = document.getElementById('projects').value
@@ -82,9 +89,7 @@
             let sum = 0;
 
             for (let i = 0; i < items.length; ++i) {
-                let value = parseInt(items[i].innerHTML);
-                if (value)
-                    sum += value;
+                sum += parseInt(items[i].innerHTML);
             }
 
             document.getElementById('sum').innerHTML = sum.toString();
