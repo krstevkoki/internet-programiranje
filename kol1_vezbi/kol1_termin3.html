@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadaca 1 | Kolokvium1</title>
+    <style rel="stylesheet" type="text/css">
+        span, input[type='button'] {
+            cursor: pointer;
+        }
+    </style>
+    <script rel="script" type="text/javascript">
+        function removeZeroes() {
+            let number = document.getElementById('binary-number');
+
+            if (number.value !== "")
+                number.value = number.value.replace(/0/g, ' ');
+        }
+
+        function removeOnes() {
+            let number = document.getElementById('binary-number');
+
+            if (number.value !== "")
+                number.value = number.value.replace(/1/g, ' ');
+        }
+
+        function statistics() {
+            let number = document.getElementById('binary-number').value;
+            let stats = document.getElementById('stats');
+
+            let zeroesNumber = number.match(/0/g);
+            let onesNumber = number.match(/1/g);
+
+            stats.innerHTML = `0:${zeroesNumber !== null ? zeroesNumber.length : 0}&nbsp;1:${onesNumber !== null ? onesNumber.length : 0}`;
+        }
+    </script>
+</head>
+<body>
+<div class="row">
+    <input id="binary-number" type="text" placeholder="Enter binary number..."><!--
+ --><input id="count-button" type="button" value="Count" onclick="statistics()"><!--
+ --><span id="stats"></span>
+</div>
+<div class="row">
+    <span onmouseenter="removeZeroes()">0</span>&nbsp;&nbsp;<span onmouseenter="removeOnes()">1</span>
+</div>
+</body>
+</html>
