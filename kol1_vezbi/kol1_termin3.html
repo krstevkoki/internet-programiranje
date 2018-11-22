@@ -10,19 +10,21 @@
         }
     </style>
     <script rel="script" type="text/javascript">
-        function removeZeroes() {
+        function removeElement(element) {
+            let number = document.getElementById('binary-number');
+
+            if (number.value !== "") {
+                let regex = new RegExp(element, 'g');
+                number.value = number.value.replace(regex, ' ');
+            }
+        }
+
+        /*function putBack(element) {
             let number = document.getElementById('binary-number');
 
             if (number.value !== "")
-                number.value = number.value.replace(/0/g, ' ');
-        }
-
-        function removeOnes() {
-            let number = document.getElementById('binary-number');
-
-            if (number.value !== "")
-                number.value = number.value.replace(/1/g, ' ');
-        }
+                number.value = number.value.replace(/\s/g, element);
+        }*/
 
         function statistics() {
             let number = document.getElementById('binary-number').value;
@@ -42,7 +44,8 @@
  --><span id="stats"></span>
 </div>
 <div class="row">
-    <span onmouseenter="removeZeroes()">0</span>&nbsp;&nbsp;<span onmouseenter="removeOnes()">1</span>
+    <span onmouseenter="removeElement('0')" onmouseleave="/*putBack('0')*/">0</span>&nbsp;&nbsp;<!--
+    --><span onmouseenter="removeElement('1')" onmouseleave="/*putBack('1')*/">1</span>
 </div>
 </body>
 </html>
