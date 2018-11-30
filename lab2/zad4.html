@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 4</title>
+        <style type="text/css" rel="stylesheet">
+            span.italic {
+                font-style: italic;
+            }
+
+            div.row {
+                margin-bottom: 20px;
+            }
+
+            div.row input[type='text'] {
+                width: 65px;
+            }
+        </style>
+        <script type="application/javascript" rel="script">
+            function addNumbers() {
+                let realPart_number1 = document.querySelector( 'div#number1 > input.real-part' ).value;
+                let imagPart_number1 = document.querySelector( 'div#number1 > input.imag-part' ).value;
+                let realPart_number2 = document.querySelector( 'div#number2 > input.real-part' ).value;
+                let imagPart_number2 = document.querySelector( 'div#number2 > input.imag-part' ).value;
+
+                if ( realPart_number1 === "" ||
+                    imagPart_number1 === "" ||
+                    realPart_number2 === "" ||
+                    imagPart_number2 === "" ) {
+                    alert( "Сите полиња се задолжителни" );
+                    return;
+                }
+
+                if ( isNaN( parseInt( realPart_number1 ) ) ||
+                    isNaN( parseInt( imagPart_number1 ) ) ||
+                    isNaN( parseInt( realPart_number2 ) ) ||
+                    isNaN( parseInt( imagPart_number2 ) ) ) {
+                    alert( "Внесете броеви во сите полиња" );
+                    return;
+                }
+
+                document.querySelector( 'div#result > input.real-part' ).value =
+                    parseInt( realPart_number1 ) + parseInt( realPart_number2 );
+                document.querySelector( 'div#result > input.imag-part' ).value =
+                    parseInt( imagPart_number1 ) + parseInt( imagPart_number2 );
+            }
+        </script>
+    </head>
+    <body>
+        <div id="number1" class="row">
+            <input class="real-part" type="text" placeholder="Real part">
+            <input class="imag-part" type="text" placeholder="Imaginary part">
+            <span class="italic">i</span>
+        </div>
+        <div id="number2" class="row">
+            <input class="real-part" type="text" placeholder="Real part">
+            <input class="imag-part" type="text" placeholder="Imaginary part">
+            <span class="italic">i</span>
+        </div>
+        <div class="row">
+            <button id="add-button" type="button" onclick="addNumbers()">Add</button>
+        </div>
+        <div id="result" class="row">
+            <input class="real-part" type="text" placeholder="Real part">
+            <input class="imag-part" type="text" placeholder="Imaginary part">
+            <span class="italic">i</span>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 1</title>
+        <style type="text/css" rel="stylesheet"></style>
+        <script type="application/javascript" rel="script">
+            function removeColor() {
+                let list = document.querySelector( 'select#colorSelect' );
+                if ( list.selectedIndex !== -1 ) {
+                    console.log( list.options[list.selectedIndex].innerText );
+                    list.options.remove( list.selectedIndex );
+                    if ( list.options.length === 0 )
+                        document.querySelector( 'form input[type="button"]' ).setAttribute( 'disabled', true );
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+            <select id="colorSelect">
+                <option>Red</option>
+                <option>Green</option>
+                <option>White</option>
+                <option>Black</option>
+            </select>
+            <input type="button" onclick="removeColor()" value="Select and Remove"><br>
+        </form>
+    </body>
+</html>

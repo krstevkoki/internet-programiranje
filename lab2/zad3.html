@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 3</title>
+        <style type="text/css" rel="stylesheet">
+            li.list-item span {
+                font-weight: bold;
+            }
+
+            li.list-item {
+                margin: 5px 0;
+            }
+        </style>
+        <script type="application/javascript" rel="script">
+            function bodyLoaded() {
+                document.querySelector( 'body' ).style.fontFamily = 'Arial';
+
+                document.querySelector( 'span#name' ).innerHTML = 'Kostadin Krstev';
+                document.querySelector( 'span#index' ).innerHTML = '161169';
+                document.querySelector( 'span#hometown' ).innerHTML = 'Negotino';
+
+                document.querySelectorAll( 'ul#list li.list-item' )
+                    .forEach( item => item.style.backgroundColor = '#ff0000' )
+            }
+        </script>
+    </head>
+    <body onload="bodyLoaded()">
+        <h1>About Me</h1>
+        <ul id="list">
+            <li class="list-item">Name: <span id="name"></span></li>
+            <li class="list-item">Index: <span id="index"></span></li>
+            <li class="list-item">Hometown: <span id="hometown"></span></li>
+        </ul>
+    </body>
+</html>
