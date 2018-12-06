@@ -4,6 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Exercise 3</title>
+        <style rel="stylesheet" type="text/css">
+            .bold {
+                font-weight: bold;
+            }
+        </style>
         <script rel="script" type="application/javascript">
             function Cilindar( r, h ) {
                 this.r = r;
@@ -15,15 +20,23 @@
                 return this.h * Math.pow( this.r, 2 ) * Math.PI;
             };
 
-            let cilindar1 = new Cilindar( 5.3, 6 );
-            console.log( cilindar1.volumen() );
-            let cilindar2 = new Cilindar( 7.8, 4 );
-            console.log( cilindar2.volumen() );
-            let cilindar3 = new Cilindar( 3.6, 9 );
-            console.log( cilindar3.volumen() );
+            function loaded() {
+                let cilindri = [new Cilindar( 5.3, 6 ), new Cilindar( 7.8, 4 ), new Cilindar( 3.6, 9 )];
+
+                let paragraph = document.querySelector( 'p#result' );
+
+                for ( let cilindar of cilindri ) {
+                    paragraph.innerHTML += `
+                        <span>
+                            r =<span class="bold">${ cilindar.r }</span>,
+                            h = <span class="bold">${ cilindar.h }</span>,
+                            V = <span class="bold">${ cilindar.volumen() }</span>
+                        </span><br>`
+                }
+            }
         </script>
     </head>
-    <body>
-
+    <body onload="loaded()">
+        <p id="result"></p>
     </body>
 </html>
