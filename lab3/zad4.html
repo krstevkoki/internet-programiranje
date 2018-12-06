@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 4</title>
+        <style rel="stylesheet" type="text/css">
+            .underline {
+                text-decoration: underline;
+            }
+
+            .italic {
+                font-style: italic;
+            }
+
+            .bold {
+                font-weight: bold;
+            }
+        </style>
+        <script rel="script" type="application/javascript">
+            let books = [
+                { title: "The Hobbit", author: "J.R.R Tolkien", alreadyRead: true },
+                { title: "The Lord of the Rings", author: "J.R.R Tolkien", alreadyRead: false },
+                { title: "Inferno", author: "Dan Brown", alreadyRead: true },
+                { title: "Origin", author: "Dan Brown", alreadyRead: true },
+                { title: "Gol Covek", author: "Igor Dzambazov", alreadyRead: false }
+            ];
+
+            function loadedBody() {
+                let paragraph = document.querySelector( 'p#result' );
+
+                for ( let book of books ) {
+                    paragraph.innerHTML +=
+                        `<span>You <span class="underline">${ book.alreadyRead ? "already read" : "still need to read"
+                            }</span> <span class="bold">"${ book.title }"</span> by <span class="italic">${
+                            book.author }</span></span><br>`
+                }
+            }
+        </script>
+    </head>
+    <body onload="loadedBody()">
+        <p id="result"></p>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 2</title>
+        <script rel="script" type="application/javascript">
+            console.log( remove_array_element( [2, 5, 9, 6], 5 ) );
+
+            function remove_array_element( array, element ) {
+                if ( !array )
+                    return void 0;
+
+                if ( array.includes( element ) )
+                    return array.slice( 0, array.indexOf( element ) )
+                        .concat( array.slice( array.indexOf( element ) + 1 ) );
+
+                return array;
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
