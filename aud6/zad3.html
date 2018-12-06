@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud6 exercises</title>
+        <script rel="script" type="application/javascript">
+            let number = prompt( 'Please enter a number:' );
+            console.log( insertDash( number ) );
+
+            function insertDash( number ) {
+                if ( number === null )
+                    return void 0;
+                let result = '';
+
+                for ( let i = 0; i < number.length; ++i ) {
+                    if ( parseInt( number[i] ) % 2 === 0 && parseInt( number[i + 1] ) % 2 === 0 ) {
+                        if ( result.charAt( result.length - 1 ) !== number[i] )
+                            result += `${ number[i] }-${ number[i + 1] }`;
+                        else
+                            result += `-${ number[i + 1] }`
+                    } else {
+                        if ( result.charAt( result.length - 1 ) !== number[i] )
+                            result += number[i];
+                    }
+                }
+
+                return result;
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

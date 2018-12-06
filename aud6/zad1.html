@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud6 exercises</title>
+        <script rel="script" type="application/javascript">
+            console.log( first( [], 3 ) );
+            console.log( first( [7, 9, 0, -2], 3 ) );
+            console.log( first( [7, 9, 0, -2], 6 ) );
+            console.log( first( [7, 9, 0, -2], -3 ) );
+
+            function first( array, limit ) {
+                if ( array.length === 0 || limit < 0 )
+                    return [];
+                return array.slice( 0, limit );
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

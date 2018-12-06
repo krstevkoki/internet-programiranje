@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud6 exercise</title>
+        <style rel="stylesheet" type="text/css">
+            input[type='button'] {
+                cursor: pointer;
+            }
+
+            div.wrapper {
+                width: 50%;
+            }
+
+            div.wrapper > div.hline {
+                width: 50%;
+            }
+
+            div.wrapper input {
+                margin-right: 10px;
+            }
+
+            .hidden {
+                display: none;
+            }
+        </style>
+        <script rel="script" type="application/javascript">
+            let elements = [];
+
+            function addElement() {
+                let element = document.querySelector( 'div.wrapper > div.row > input[type="text"]#element' ).value;
+                console.log( `Adding '${ element }' to the array` );
+                elements.push( element );
+                console.log( `Added '${ element }' to the array` )
+            }
+
+            function displayResult() {
+                let paragraph = document.querySelector( 'div.wrapper > div.row > p#result' );
+                let hline = document.querySelector( 'div.wrapper > div.hline' ).classList.remove( 'hidden' );
+
+                paragraph.innerHTML = "";
+
+                for ( let i = 0; i < elements.length; ++i )
+                    paragraph.innerHTML += `<span>Element ${ i } = ${ elements[i] }</span><br>`;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="row">
+                <input id="element" type="text" name="element" placeholder="Enter value...">
+                <input id="add-button" type="button" name="add-button" value="Add" onclick="addElement()">
+                <input id="display-button" type="button" name="display-button" value="Display"
+                       onclick="displayResult()">
+            </div>
+            <div class="row hline hidden">
+                <hr>
+            </div>
+            <div class="row">
+                <p id="result"></p>
+            </div>
+        </div>
+    </body>
+</html>
