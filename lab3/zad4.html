@@ -26,19 +26,22 @@
                 { title: "Gol Covek", author: "Igor Dzambazov", alreadyRead: false }
             ];
 
-            function loadedBody() {
+            function bodyLoaded() {
                 let paragraph = document.querySelector( 'p#result' );
 
                 for ( let book of books ) {
                     paragraph.innerHTML +=
-                        `<span>You <span class="underline">${ book.alreadyRead ? "already read" : "still need to read"
-                            }</span> <span class="bold">"${ book.title }"</span> by <span class="italic">${
-                            book.author }</span></span><br>`
+                        `<span>
+                            You <span class="underline">${ book.alreadyRead ? "already read" : "still need to read" }
+                            </span>
+                            <span class="bold">"${ book.title }"</span> by
+                            <span class="italic">${ book.author }</span>
+                        </span><br>`
                 }
             }
         </script>
     </head>
-    <body onload="loadedBody()">
+    <body onload="bodyLoaded()">
         <p id="result"></p>
     </body>
 </html>
