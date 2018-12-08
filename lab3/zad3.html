@@ -10,22 +10,29 @@
             }
         </style>
         <script rel="script" type="application/javascript">
-            function Cilindar( r, h ) {
-                this.r = r;
-                this.h = h;
+            class Cilindar {
+                constructor( r, h ) {
+                    this.r = r;
+                    this.h = h;
+                }
+
+                /**
+                 * This method is not object specific.
+                 * This method is inherited through the prototype.
+                 */
+                volumen() {
+                    // return this.h * this.r * this.r  * Math.PI;
+                    return this.h * Math.pow( this.r, 2 ) * Math.PI;
+                }
             }
 
-            Cilindar.prototype.volumen = function() {
-                // return this.h * this.r * this.r  * Math.PI;
-                return this.h * Math.pow( this.r, 2 ) * Math.PI;
-            };
-
             function loaded() {
-                let cilindri = [new Cilindar( 5.3, 6 ), new Cilindar( 7.8, 4 ), new Cilindar( 3.6, 9 )];
+                let cilindri = [ new Cilindar( 5.3, 6 ), new Cilindar( 7.8, 4 ), new Cilindar( 3.6, 9 ) ];
 
                 let paragraph = document.querySelector( 'p#result' );
 
                 for ( let cilindar of cilindri ) {
+                    console.log( cilindar );
                     paragraph.innerHTML += `
                         <span>
                             r =<span class="bold">${ cilindar.r }</span>,
