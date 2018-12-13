@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud7 exercises</title>
+        <script rel="script" type="application/javascript">
+            console.log( transform( { red: "#FF0000", green: "#00FF00", white: "#FFFFFF" } ) );
+
+            function transform( object = {} ) {
+                if ( object === null || object === undefined )
+                    return void 0;
+
+                let transformed = [];
+
+                for ( let key in object ) {
+                    if ( object.hasOwnProperty( key ) ) {
+                        let list = [];
+                        list.push( key.toString() );
+                        list.push( object[ key ].toString() );
+                        transformed.push( list );
+                    }
+                }
+
+                return transformed;
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud7 exercises</title>
+        <script rel="script" type="application/javascript">
+            class Clock {
+                constructor() {
+                    let date = new Date();
+                    this.seconds = date.getHours() * ( 60 * 60 ) + date.getMinutes() * 60 + date.getSeconds();
+                }
+
+                addSec( seconds ) {
+                    this.seconds += seconds;
+                }
+
+                update() {
+                    console.log( this.toString() );
+                    this.addSec( 1 );
+                }
+
+                toString() {
+                    let sec = this.seconds;
+
+                    let hour = parseInt( sec / ( 60 * 60 ) );
+                    sec -= hour * ( 60 * 60 );
+
+                    let min = parseInt( sec / 60 );
+                    sec -= min * 60;
+
+                    return `${ ( hour < 10 ) ? ( '0' + hour ) : hour }:${ ( min < 10 ) ? ( '0' + min ) : min }:${ ( sec < 10 ) ? ( '0' + sec ) : sec }`
+                }
+
+                get run() {
+                    setInterval( this.update.bind( this ), 1000 );
+                }
+            }
+
+            let clock = new Clock();
+            clock.run;
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud7 exercises</title>
+        <script rel="script" type="application/javascript">
+            class Circle {
+                constructor( radius ) {
+                    this.radius = radius;
+                }
+
+                perimeter() {  // 2*r*PI
+                    return 2 * this.radius * Math.PI;
+                }
+
+                area() {  // r*r*PI
+                    return Math.pow( this.radius, 2 ) * Math.PI;
+                }
+            }
+
+            function radiusChanged() {
+                let radius = parseFloat( document.querySelector( 'input[type="number"]' ).value )
+                if ( isNaN( radius ) ) {
+                    alert( "Радиусот не е број" );
+                    return void 0;
+                }
+                let circle = new Circle( radius );
+                console.log( `Perimeter: ${ circle.perimeter().toFixed(2) }\nArea:${ circle.area().toFixed(2) }` );
+            }
+        </script>
+    </head>
+    <body >
+        <input id="number" type="number" name="number" min="1" step=".01" placeholder="Enter a number..."
+               onchange="radiusChanged()">
+    </body>
+</html>

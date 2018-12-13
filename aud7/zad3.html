@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud7 exercises</title>
+        <script rel="script" type="application/javascript">
+            let library = [
+                {
+                    author: 'Bill Gates',
+                    title: 'The Road Ahead',
+                    readingStatus: true
+                },
+                {
+                    author: 'Steve Jobs',
+                    title: 'Walter Isaacson',
+                    readingStatus: true
+                },
+                {
+                    author: 'Suzanne Collins',
+                    title: 'Mockingjay: The Final Book of The Hunger Games',
+                    readingStatus: false
+                } ];
+
+            console.log( print( library ) );
+
+            function print( library ) {
+                if ( library === null || library === undefined )
+                    return void 0;
+
+                for ( let i = 0; i < library.length; i++ ) {
+                    console.log( `Book ${ i + 1 }` );
+                    for ( let key in library[ i ] )
+                        if ( library[ i ].hasOwnProperty( key ) )
+                            console.log( `${ key }: ${ library[ i ][ key ] }` );
+                    console.log("\n");
+                }
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
