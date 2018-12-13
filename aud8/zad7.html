@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud8 exercises</title>
+        <script rel="script" type="application/javascript">
+            window.onload = () => {
+                let elem = document.getElementById( "myAnimation" );
+                let pos = 0;
+                let id = setInterval( frame, 10 );
+
+                function frame() {
+                    if ( pos > window.innerHeight ) {
+                        clearInterval( id );
+                    } else {
+                        pos++;
+                        elem.style.top = pos + 'px';
+                        elem.style.left = pos + 'px';
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <p id="myAnimation" style="position: absolute;">Animation!</p>
+    </body>
+</html>

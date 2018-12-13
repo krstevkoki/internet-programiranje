@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud8 exercises</title>
+        <script rel="script" type="application/javascript">
+            function setBodyAttr( attr, value ) {
+                if ( document.body )
+                    eval( `document.body.${ attr } = "${ value }"` );
+                else
+                    alert( "Not Supported" );
+            }
+        </script>
+    </head>
+    <body>
+        <div style="height: 400px;">
+            <form>
+                <p>
+                    <b>textcolor</b>
+                </p>
+                <select onChange="setBodyAttr('text', this.options[this.selectedIndex].value);">
+                    <option value="black">black</option>
+                    <option value="red">red</option>
+                </select>
+                <p>
+                    <b>bgColor</b>
+                </p>
+                <select onChange="setBodyAttr('bgColor', this.options[this.selectedIndex].value);">
+                    <option value="white">white</option>
+                    <option value="lightgrey">gray</option>
+                </select>
+                <p>
+                    <b>link</b>
+                </p>
+                <select onChange="setBodyAttr('link', this.options[this.selectedIndex].value);">
+                    <option value="blue">blue</option>
+                    <option value="green">green</option>
+                </select>
+                <small>
+                    <a href="http://www.example.com" id="sample">(sample link)</a>
+                </small>
+                <br>
+            </form>
+        </div>
+    </body>
+</html>

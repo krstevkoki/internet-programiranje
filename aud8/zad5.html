@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud8 exercises</title>
+        <script rel="script" type="application/javascript">
+            function bgChange( color ) {
+                document.body.style.background = color;
+
+                let elements = document.getElementsByTagName( 'td' );
+
+                for ( let i = 0; i < elements.length; ++i ) {
+                    if ( color === elements[ i ].style.backgroundColor ) {
+                        elements[ i ].style.border = "1px solid black";
+                        break;
+                    }
+
+                    if ( color === 'transparent' ) {
+                        elements[ i ].style.border = "";
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Change background color</h2>
+        <p>Mouse over the squares!</p>
+        <table style="width: 300px; height: 100px">
+            <tr>
+                <td onmouseover="bgChange(this.style.backgroundColor)" onmouseout="bgChange('transparent')"
+                    style="background-color: khaki">
+                </td>
+                <td onmouseover="bgChange(this.style.backgroundColor)" onmouseout="bgChange('transparent')"
+                    style="background-color: palegreen">
+                </td>
+                <td onmouseover="bgChange(this.style.backgroundColor)" onmouseout="bgChange('transparent')"
+                    style="background-color: silver">
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

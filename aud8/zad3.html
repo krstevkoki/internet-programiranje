@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud8 exercises</title>
+        <script rel="script" type="application/javascript">
+            function display() {
+                let elements = document.querySelectorAll( 'label > input' );
+                for ( let i = 0; i < elements.length; ++i ) {
+                    let input = elements[ i ];
+                    alert( input.value + ': ' + input.checked )
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <table id="myTable">
+            <tr>
+                <td>Your age:</td>
+                <td>
+                    <label><input type="radio" name="age" value="young" checked/> under 18</label>
+                    <label><input type="radio" name="age" value="mature"/> from 18 to 50</label>
+                    <label><input type="radio" name="age" value="senior"/> older than 60</label>
+                </td>
+            </tr>
+        </table>
+        <input id="display-btn" type="button" value="Display" name="btn" onclick="display()">
+    </body>
+</html>

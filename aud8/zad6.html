@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud8 exercises</title>
+        <script rel="script" type="application/javascript">
+            let bg = 0;
+            window.onload = () => {
+
+                function changeColor() {
+                    console.log( bg.toString( 16 ) );
+                    document.body.style.background = `#${ ( bg += 100 ).toString( 16 ) }`;
+                }
+
+                setInterval( changeColor, 500 );
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
