@@ -25,7 +25,7 @@
                 justify-content: flex-end;
             }
 
-            div.row > label, div.row > button, div.row select {
+            div.row > label, div.row > button, div.row select, div#result > label {
                 cursor: pointer;
             }
 
@@ -53,12 +53,14 @@
 
                 result.innerHTML = "";
                 for ( let item of items ) {
+                    let label = document.createElement( 'label' );
                     let newElement = document.createElement( 'input' );
                     newElement.setAttribute( 'type', type );
                     if ( type === 'radio' )
                         newElement.setAttribute( 'name', 'items' );
-                    result.appendChild( newElement );
-                    result.appendChild( document.createTextNode( item ) );
+                    label.appendChild( newElement );
+                    label.appendChild( document.createTextNode( item ) );
+                    result.appendChild( label );
                 }
             }
         </script>
