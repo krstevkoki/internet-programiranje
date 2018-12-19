@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud9 exercises</title>
+        <style rel="stylesheet" type="text/css">
+            button {
+                cursor: pointer;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script rel="script" type="application/javascript">
+            $( document ).ready( () => {
+                $( 'button' ).click( () => {
+                    let link = $( '#w3s' );
+                    link.attr( {
+                        "href": "http://www.w3schools.com/jquery",
+                        "title": "W3Schools jQuery Tutorial"
+                    } );
+                    link.text( 'W3SchoolsJquery.com' );
+                } );
+            } );
+        </script>
+    </head>
+    <body>
+        <p>
+            <a id="w3s" href="http://www.w3schools.com" title="some title" target="_blank">W3Schools.com</a>
+        </p>
+        <button>Change href and title</button>
+    </body>
+</html>

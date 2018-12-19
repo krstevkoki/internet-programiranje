@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud9 exercises</title>
+        <style rel="stylesheet" type="text/css">
+            p {
+                width: 10%;
+            }
+
+            #p1, #p2 {
+                cursor: pointer;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script rel="script" type="application/javascript">
+            $( document ).ready( () => {
+                $( '#p1' ).click( ( e ) => {
+                    console.log( e );
+                    // alert( e.type );
+                    alert( 'Click' );
+                } );
+
+                $( '#p2' ).dblclick( ( e ) => {
+                    console.log( e );
+                    // alert( e.type );
+                    alert( 'Double click' );
+                } );
+
+                $( '#p3' ).on( "mouseenter mouseleave", ( ( e ) => {
+                    console.log( e );
+                    // alert( e.type );
+                    alert( e.type === 'mouseenter' ? 'Mouse enter' : 'Mouse leave' );
+                } ) );
+            } );
+        </script>
+    </head>
+    <body>
+        <p id="p1">Click me</p>
+        <p id="p2">Double click me</p>
+        <p id="p3">Enter this paragraph.</p>
+    </body>
+</html>

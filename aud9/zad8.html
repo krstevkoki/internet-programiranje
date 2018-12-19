@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud9 exercises</title>
+        <style rel="stylesheet" type="text/css">
+            button {
+                cursor: pointer;
+            }
+
+            div {
+                background: #98BF21;
+                height: 100px;
+                width: 100px;
+                position: absolute;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script rel="script" type="application/javascript">
+            $( document ).ready( () => {
+                $( '#btn-click' ).click( () => {
+                    let div = $( "div" );
+
+                    div.animate( {
+                        height: "300px",
+                        opacity: "0.4"
+                    }, "slow" );
+
+                    div.animate( {
+                        width: "300px",
+                        opacity: "0.8"
+                    }, "slow" );
+
+                    div.animate( {
+                        height: "100px",
+                        opacity: "0.4"
+                    }, "slow" );
+
+                    div.animate( {
+                        width: "100px",
+                        opacity: "0.8"
+                    }, "slow" );
+
+                    div.animate( {
+                        left: "250px",
+                        opacity: "1",
+                        height: "150px",
+                        width: "150px"
+                    }, 1500 );
+
+                    div.animate( {
+                        left: "10.4px",
+                        opacity: "1",
+                        height: "100px",
+                        width: "100px"
+                    }, 0 );
+                } );
+            } );
+        </script>
+    </head>
+    <body>
+        <p>
+            <button id="btn-click" type="button" name="click">Start Animation</button>
+        </p>
+        <div></div>
+    </body>
+</html>

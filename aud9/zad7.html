@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud9 exercises</title>
+        <style rel="stylesheet" type="text/css">
+            button {
+                cursor: pointer;
+            }
+
+            div {
+                width: 80px;
+                height: 80px;
+                display: none;
+            }
+
+            #div1 {
+                background-color: red;
+            }
+
+            #div2 {
+                background-color: green;
+            }
+
+            #div3 {
+                background-color: blue;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script rel="script" type="application/javascript">
+            $( document ).ready( () => {
+                let button = $( '#btn-click' );
+
+                button.click( ( e ) => {
+                    console.log( e.type );
+
+                    $( "div#div1" ).fadeIn();
+                    // $( "div#div1" ).fadeIn(500);
+                    $( "div#div2" ).fadeIn( "slow" );
+                    // $( "div#div2" ).fadeIn( 1500 );
+                    $( "div#div3" ).fadeIn( 2500 );
+                } );
+
+                button.dblclick( ( e ) => {
+                    console.log( e.type );
+
+                    $( "div#div1" ).fadeOut();
+                    // $( "div#div1" ).fadeOut(500);
+                    $( "div#div2" ).fadeOut( "slow" );
+                    // $( "div#div2" ).fadeOut( 1500 );
+                    $( "div#div3" ).fadeOut( 2500 );
+                } );
+            } );
+        </script>
+    </head>
+    <body>
+        <p>
+            <button id="btn-click" type="button" name="click">Click!</button>
+        </p>
+        <br>
+        <div id="div1"></div>
+        <br>
+        <div id="div2"></div>
+        <br>
+        <div id="div3"></div>
+    </body>
+</html>

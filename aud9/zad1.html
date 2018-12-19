@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud9 exercises</title>
+        <style rel="stylesheet" type="text/css">
+            button {
+                cursor: pointer;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script rel="script" type="application/javascript">
+            $( document ).ready( () => {
+                $( '#btn1' ).click( () => {
+                    alert( `Text: ${ $( '#test' ).text() }` );
+                } );
+
+                $( '#btn2' ).click( () => {
+                    alert( `HTML: ${ $( '#test' ).html() }` );
+                } );
+
+                $( '#btn3' ).click( () => {
+                    alert( `Value: ${ $( '#inp' ).val() }` );
+                } );
+            } );
+        </script>
+    </head>
+    <body>
+        <p id="test">This is some <b>bold</b> text in a paragraph.</p>
+        <input id="inp"/>
+        <br/>
+        <p>
+            <button id="btn1">Show Text</button>
+            <button id="btn2">Show HTML</button>
+            <button id="btn3">Show value</button>
+        </p>
+    </body>
+</html>

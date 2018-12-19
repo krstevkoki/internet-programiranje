@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud9 exercises</title>
+        <style rel="stylesheet" type="text/css">
+            button {
+                cursor: pointer;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script rel="script" type="application/javascript">
+            $( document ).ready( () => {
+                $( '#btn1' ).click( () => {
+                    $( 'span' ).before( '<b>Before</b>&nbsp;' );
+                } );
+
+                $( '#btn2' ).click( () => {
+                    $( 'span' ).after( '&nbsp;<b>After</b>' );
+                } );
+
+                $( '#btn3' ).click( () => {
+                    $( 'span' ).prepend( '<i>Prepend</i>&nbsp;' );
+                } );
+
+                $( '#btn4' ).click( () => {
+                    $( 'span' ).append( '&nbsp;<i>Append</i>' );
+                } );
+
+                $( '#btn5' ).click( () => {
+                    $( 'span' ).remove();
+                } );
+            } );
+        </script>
+    </head>
+    <body>
+        <div id="text">
+            <span>X</span>
+        </div>
+        <br/>
+        <p>
+            <button id="btn1" name="btn1" type="button">Insert before</button>
+            <button id="btn2" name="btn2" type="button">Insert after</button>
+            <button id="btn3" name="btn3" type="button">Prepend</button>
+            <button id="btn4" name="btn4" type="button">Append</button>
+            <button id="btn5" name="btn5" type="button">Remove</button>
+        </p>
+    </body>
+</html>

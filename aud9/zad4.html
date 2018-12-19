@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud9 exercises</title>
+        <style rel="stylesheet" type="text/css">
+            button {
+                cursor: pointer;
+            }
+
+            .blue {
+                color: #0000FF;
+            }
+
+            .important {
+                color: #FF0000;
+                text-transform: uppercase;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script rel="script" type="application/javascript">
+            $( document ).ready( () => {
+                $( '#button1' ).click( () => {
+                    $( 'h1, h2, p' ).addClass( 'blue' );
+                    $( 'div > div' ).addClass( 'important' );
+                } );
+
+                $( '#button2' ).click( () => {
+                    $( 'h1, h2, p' ).removeClass( 'blue' );
+                    $( 'div > div' ).removeClass( 'important' );
+                } );
+            } );
+        </script>
+    </head>
+    <body>
+        <div>
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <p>This is a paragraph.</p>
+            <p>This is another paragraph.</p>
+            <div>This is some important text!</div>
+        </div>
+        <br>
+        <div>
+            <button id="button1" type="button" name="btn1">Add classes to elements</button>
+            <button id="button2" type="button" name="btn2">Remove class from elements</button>
+        </div>
+    </body>
+</html>
