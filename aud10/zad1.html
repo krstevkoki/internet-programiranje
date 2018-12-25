@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud10 exercises</title>
+        <style rel="stylesheet" type="text/css">
+            button {
+                cursor: pointer;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script rel="script" type="application/javascript">
+            $( document ).ready( () => {
+                $( 'button' ).click( () => {
+                    let url = 'ajax_info.txt';
+                    let xmlhttp = new XMLHttpRequest();
+
+                    xmlhttp.onreadystatechange = function() {
+                        console.log( `State: ${ xmlhttp.readyState }` );
+                        if ( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
+                            document.getElementById( "myDiv" ).innerHTML = xmlhttp.responseText;
+                        } else if ( xmlhttp.readyState === 4 ) {
+                            alert( `Code: ${ xmlhttp.status }\nDescription: ${ xmlhttp.statusText }` )
+                        }
+                    };
+
+                    xmlhttp.open( "GET", url, true );
+                    xmlhttp.send();
+
+                    // jQuery way
+                    /*$.ajax( {
+                        url: url,
+                        method: "GET",
+                        success: function( result ) {
+                            $( 'div#myDiv' ).html( result );
+                        }
+                    } );*/
+
+                    /*$.get( url, ( result ) => {
+                        $( 'div#myDiv' ).html( result );
+                    } );*/
+                } );
+            } );
+        </script>
+    </head>
+    <body>
+        <div id="myDiv">
+            <h2>Let AJAX change this text</h2>
+        </div>
+        <button type="button">Change Content</button>
+    </body>
+</html>

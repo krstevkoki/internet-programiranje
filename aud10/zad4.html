@@ -1,0 +1,51 @@
+<!DOCTYP4E html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud10 exercise</title>
+        <script rel="script" type="application/javascript">
+            let username;
+
+            window.onload = () => {
+                checkCookie();
+                if ( username !== null && username !== undefined && username !== "" )
+                    document.querySelector( 'h3#show' ).innerHTML = `Hi, ${ username }!`;
+            };
+
+            function setCookie( cookieName, cookieValue, days ) {
+                let expireDate = new Date();
+                expireDate.setTime( expireDate.getTime() + ( days * 24 * 60 * 60 * 1000 ) );
+                document.cookie = `${ cookieName }=${ cookieValue }; expires=${ expireDate.toUTCString() }; path=/`
+            }
+
+            function getCookie( cookieName ) {
+                let decodedCookie = decodeURIComponent( document.cookie );
+                console.log( decodedCookie );
+                let cookiesArray = decodedCookie.split( ';' );
+                for ( let cookie of cookiesArray ) {
+                    let split = cookie.split( '=' );
+                    if ( split[ 0 ].trim() === cookieName.trim() )
+                        return split[ 1 ];
+                }
+                return "";
+            }
+
+            function checkCookie() {
+                username = getCookie( 'username' );
+                if ( username !== "" )
+                    alert( `Welcome back, ${ username }!` );
+                else {
+                    let input = prompt( 'Please enter your name:', '' );
+                    if ( input !== null && input !== undefined && input !== "" ) {
+                        setCookie( 'username', input, 365 );
+                        username = input;
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h3 id="show"></h3>
+    </body>
+</html>

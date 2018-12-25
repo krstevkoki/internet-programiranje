@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud10 exercise</title>
+        <script rel="script" type="application/javascript">
+            window.onload = () => {
+                let xmlhttp = new XMLHttpRequest();
+                let url = "myTutorials.json";
+
+                xmlhttp.onreadystatechange = () => {
+                    console.log( `Status: ${ xmlhttp.readyState }` );
+                    if ( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
+                        let myArr = JSON.parse( xmlhttp.responseText );
+                        myFunction( myArr );
+                    } else if ( xmlhttp.readyState === 4 ) {
+                        alert( `Code: ${ xmlhttp.status }\nDescription: ${ xmlhttp.statusText }` );
+                    }
+                };
+
+                xmlhttp.open( "GET", url, true );
+                xmlhttp.send();
+            };
+
+            function myFunction( arr ) {
+                let p = document.getElementById( "p1" );
+                for ( let i = 0; i < arr.length; ++i ) {
+                    let anchor = document.createElement( 'a' );
+                    anchor.setAttribute( 'href', arr[ i ].url );
+                    anchor.innerText = arr[ i ].display;
+                    let div = document.createElement( 'div' );
+                    div.appendChild( anchor );
+                    p.appendChild( div );
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <p id="p1"></p>
+    </body>
+</html>

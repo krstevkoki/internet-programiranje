@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aud10 exercise</title>
+        <script rel="script" type="application/javascript">
+            function loadXMLDoc( url ) {
+                let xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.onreadystatechange = function() {
+                    if ( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
+                        document.getElementById( 'a1' ).innerHTML = xmlhttp.status.toString();
+                        document.getElementById( 'a2' ).innerHTML = xmlhttp.statusText;
+                        document.getElementById( 'a3' ).innerHTML = xmlhttp.responseText;
+                    }
+                };
+
+                xmlhttp.open( "GET", url, true );
+                xmlhttp.send();
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Retrieve data from XML file</h2>
+        <p><b>Status:&nbsp;</b><span id="a1"></span></p>
+        <p><b>Status text:&nbsp;</b><span id="a2"></span></p>
+        <p><b>Response:&nbsp;</b><span id="a3"></span></p>
+        <button onclick="loadXMLDoc('note.xml')">Get XML data</button>
+    </body>
+</html>
