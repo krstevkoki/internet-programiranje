@@ -1,0 +1,32 @@
+[
+	{
+		"brand": "audi",
+		"model": "q7",
+		"color": "#777777",
+		"maxSpeed": 230
+	},
+	{
+		"brand": "bmw",
+		"model": "x7",
+		"color": "#772222",
+		"maxSpeed": 250
+	},
+	{
+		"brand": "chevrolet",
+		"model": "camaro",
+		"color": "#aaaa00",
+		"maxSpeed": 210
+	},
+	{
+		"brand": "opel",
+		"model": "astra",
+		"color": "#111111",
+		"maxSpeed": 190
+	},
+	{
+		"brand": "toyota",
+		"model": "prius",
+		"color": "#111199",
+		"maxSpeed": 160
+	}
+]

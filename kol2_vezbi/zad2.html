@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 2</title>
+        <style rel="stylesheet" type="text/css">
+            input[type="number"] {
+                width: 50px;
+            }
+        </style>
+        <script rel="script" type="application/javascript">
+            window.onload = () => {
+                let xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.onreadystatechange = () => {
+                    console.log( xmlhttp.readyState );
+                    if ( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
+                        let cars = JSON.parse( xmlhttp.responseText );
+                        let div = document.querySelector( 'div#avtomobili' );
+
+                        for ( let car of cars ) {
+                            let p = document.createElement( 'p' );
+                            p.innerHTML = `
+                                <b>marka</b>:<span>${ car.brand }</span>&nbsp;
+                                <b>model</b>:<span>${ car.model }</span>&nbsp;
+                                <b>boja</b>:<input type="color" value="${ car.color }" disabled>&nbsp;
+                                <b>max brzina</b>:<input type="number" value="${ car.maxSpeed }">
+                            `;
+                            div.appendChild( p );
+                        }
+                    } else if ( xmlhttp.readyState === 4 ) {
+                        alert( `${ xmlhttp.status } ${ xmlhttp.statusText }` );
+                    }
+                };
+
+                xmlhttp.open( "GET", "avtomobili.json", true );
+                xmlhttp.send();
+            };
+
+            function sortiraj() {
+                let div = document.querySelector( 'div#avtomobili' );
+                let cars = Array.from( div.childNodes );
+
+                cars.sort( ( a, b ) => {
+                    return a.children[ 7 ].value - b.children[ 7 ].value;
+                } );
+
+                while ( div.firstChild )
+                    div.removeChild( div.firstChild );
+
+                for ( let car of cars ) {
+                    let p = document.createElement( 'p' );
+                    p.innerHTML = `
+                        <b>marka</b>:<span>${ car.children[ 1 ].innerHTML }</span>&nbsp;
+                        <b>model</b>:<span>${ car.children[ 3 ].innerHTML }</span>&nbsp;
+                        <b>boja</b>:<input type="color" value="${ car.children[ 5 ].value }" disabled>&nbsp;
+                        <b>max brzina</b>:<input type="number" value="${ car.children[ 7 ].value }">
+                    `;
+                    p.style.backgroundColor = car.children[ 5 ].value;
+                    div.appendChild( p );
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="avtomobili"></div>
+        <div>
+            <button id="btn-sort" type="button" name="btn-sort" onclick="sortiraj()">sortiraj</button>
+        </div>
+    </body>
+</html>

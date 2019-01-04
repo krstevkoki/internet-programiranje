@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 1</title>
+        <style rel="stylesheet" type="text/css">
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: separate;
+            }
+
+            input[type="number"] {
+                width: 50px;
+            }
+        </style>
+        <script rel="script" type="application/javascript">
+            window.onload = () => {
+                let xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.onreadystatechange = () => {
+                    console.log( xmlhttp.readyState );
+                    if ( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
+                        let ovoshki = JSON.parse( xmlhttp.responseText );
+                        let tbody = document.querySelector( 'table#ovoshje > tbody' );
+
+                        for ( let ovoshje of ovoshki ) {
+                            let row = tbody.insertRow();
+                            row.insertCell().innerHTML = ovoshje.name;
+                            row.insertCell().innerHTML = ovoshje.quantity;
+                            row.insertCell().innerHTML = ovoshje.price;
+                            row.insertCell().innerHTML = `<input type="number"/>`
+                        }
+                    } else if ( xmlhttp.readyState === 4 ) {
+                        alert( `${ xmlhttp.status } - ${ xmlhttp.statusText }` )
+                    }
+                };
+
+                xmlhttp.open( "GET", "ovoshki.json", true );
+                xmlhttp.send();
+            };
+
+            function calculate() {
+                let rows = document.querySelector( 'table#ovoshje > tbody' ).childNodes;
+                let status = document.querySelector( 'p#status' );
+                let sum = 0;
+                let flagError = false;
+
+                status.innerHTML = "";
+
+                for ( let row of rows ) {
+                    let ime_ovoshka = row.cells[ 0 ].innerHTML;
+                    let kolicina_ovoshka = parseInt( row.cells[ 1 ].innerHTML );
+                    let cena_ovoshka = parseInt( row.cells[ 2 ].innerHTML );
+                    let kolicina_kupi = row.cells[ 3 ].childNodes[ 0 ].value;
+
+                    if ( kolicina_kupi < 0 ) {
+                        flagError = true;
+                        row.style.backgroundColor = 'red';
+                        status.innerHTML += `negativna vrednost kaj ${ ime_ovoshka }<br>`;
+                    } else if ( kolicina_kupi > kolicina_ovoshka ) {
+                        flagError = true;
+                        row.style.backgroundColor = 'red';
+                        status.innerHTML += `pogreshna kolichina kaj ${ ime_ovoshka }<br>`;
+                    } else {
+                        sum += ( kolicina_kupi * cena_ovoshka );
+                        row.style.backgroundColor = '';
+                    }
+                }
+
+                if ( !flagError )
+                    status.innerHTML = `vkupna cena ${ sum }`;
+            }
+        </script>
+    </head>
+    <body>
+        <table id="ovoshje">
+            <thead>
+                <tr>
+                    <th>ime</th>
+                    <th>kolichina</th>
+                    <th>cena</th>
+                    <th>kupi</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button id="btn-calc" type="button" name="btn-calc" onclick="calculate()">presmetaj</button>
+        <p id="status"></p>
+    </body>
+</html>
