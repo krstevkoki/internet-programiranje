@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 1</title>
+        <style rel="stylesheet" type="text/css">
+            button {
+                cursor: pointer;
+            }
+        </style>
+        <script rel="script" type="application/javascript">
+            function ajaxLoad( url ) {
+                let xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.onreadystatechange = () => {
+                    console.log( xmlhttp.readyState );
+                    if ( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
+                        document.querySelector( 'h1#change' ).innerHTML = xmlhttp.responseText;
+                    } else if ( xmlhttp.readyState === 4 ) {
+                        alert( `${ xmlhttp.status } ${ xmlhttp.statusText }` );
+                    }
+                };
+
+                xmlhttp.open( "GET", url, true );
+                xmlhttp.send();
+            }
+        </script>
+    </head>
+    <body>
+        <h1 id="change">Let AJAX change this text.</h1>
+        <button id="btn-change" type="button" name="btn-change" onclick="ajaxLoad('demo.txt')">Change Content</button>
+    </body>
+</html>

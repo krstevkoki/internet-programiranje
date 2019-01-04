@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 2</title>
+        <style rel="stylesheet" type="text/css">
+            button {
+                cursor: pointer;
+            }
+        </style>
+        <script rel="script" type="application/javascript">
+            function ajaxLoad( url ) {
+                let xmlhttp = new XMLHttpRequest();
+                let results = document.querySelector( 'p#result' );
+
+                results.innerHTML = "";
+
+                xmlhttp.onreadystatechange = () => {
+                    results.innerHTML += `readyState: ${ xmlhttp.readyState }<br>`;
+                    results.innerHTML += `status: ${ xmlhttp.status }<br>`;
+                    results.innerHTML += `statusText: ${ xmlhttp.statusText }<br>`;
+                    results.innerHTML += `response: ${ xmlhttp.response }<br>`;
+                    results.innerHTML += `responseType: ${ xmlhttp.responseType }<br>`;
+                    results.innerHTML += `responseText: ${ xmlhttp.responseText }<br>`;
+                    results.innerHTML += `responseXML: ${ xmlhttp.responseXML }<br>`;
+                    results.innerHTML += `responseURL: ${ xmlhttp.responseURL }<br>`;
+                    results.innerHTML += `timeout: ${ xmlhttp.timeout }<br>`;
+                    results.innerHTML += `withCredentials: ${ xmlhttp.withCredentials }<br><br>`;
+                };
+
+                xmlhttp.open( "GET", url, true );
+                xmlhttp.send();
+            }
+        </script>
+    </head>
+    <body>
+        <button id="btn-ajax" type="button" name="btn-ajax" onclick="ajaxLoad('demo.txt')">AJAX call</button>
+        <p id="result"></p>
+    </body>
+</html>

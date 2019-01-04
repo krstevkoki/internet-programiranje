@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 3</title>
+        <style rel="stylesheet" type="text/css">
+            label, button {
+                cursor: pointer;
+            }
+        </style>
+        <script rel="script" type="application/javascript">
+            function ajaxLoad( url ) {
+                let xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.onreadystatechange = () => {
+                    if ( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
+                        document.querySelector( 'div.row p#result' ).innerText = xmlhttp.responseText;
+                    } else if ( xmlhttp.readyState === 4 ) {
+                        alert( `${ xmlhttp.status } ${ xmlhttp.statusText }` );
+                        document.querySelector( 'div.row p#result' ).innerText = `${ xmlhttp.status } ${ xmlhttp.statusText }`;
+                    }
+                };
+
+                xmlhttp.open( "GET", url, true );
+                xmlhttp.send();
+            }
+        </script>
+    </head>
+    <body>
+        <div class="row">
+            <label>URL: <input id="url" type="text" name="url"/></label>
+            <button id="btn-open" type="button" name="btn-open"
+                    onclick="ajaxLoad(document.querySelector('input#url').value)">Open
+            </button>
+        </div>
+        <div class="row">
+            <p id="result"></p>
+        </div>
+    </body>
+</html>
