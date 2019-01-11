@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 4</title>
+        <style rel="stylesheet" type="text/css">
+            label, button {
+                cursor: pointer;
+            }
+
+            ul {
+                list-style-type: none;
+            }
+        </style>
+        <script rel="script" type="application/javascript">
+            function outOfBound( color ) {
+                return !( color >= 0 && color <= 255 );
+            }
+
+            function addElement() {
+                let red = parseInt( document.getElementById( 'red' ).value );
+                let green = parseInt( document.getElementById( 'green' ).value );
+                let blue = parseInt( document.getElementById( 'blue' ).value );
+                let start = document.getElementById( 'start' ).checked;
+                let text = document.getElementById( 'text' );
+                let result = document.getElementById( 'result' );
+
+                if ( isNaN( red ) || isNaN( green ) || isNaN( blue ) || text.value === "" ||
+                    outOfBound( red ) || outOfBound( green ) || outOfBound( blue ) ) {
+                    alert( "Внесот е невалиден!" );
+                    return;
+                }
+
+                let p = document.createElement( 'p' );
+                p.innerText = text.value;
+                p.style.color = `rgb(${ red }, ${ green }, ${ blue })`;
+
+                if ( start )
+                    result.insertBefore( p, result.firstChild );
+                else
+                    result.appendChild( p );
+
+                text.value = "";
+            }
+
+            function removeElement() {
+                let start = document.getElementById( 'start' ).checked;
+                let result = document.getElementById( 'result' );
+
+                if ( result.childNodes.length > 0 ) {
+                    if ( start )
+                        result.removeChild( result.firstChild );
+                    else
+                        result.removeChild( result.lastChild );
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="row">
+            <label>
+                Red:
+                <input id="red" type="number" min="0" max="255" value="0">
+                <small>(0-255)</small>
+            </label>
+        </div>
+        <br>
+        <div class="row">
+            <label>
+                Green:
+                <input id="green" type="number" min="0" max="255" value="0">
+                <small>(0-255)</small>
+            </label>
+        </div>
+        <br>
+        <div class="row">
+            <label>
+                Blue:
+                <input id="blue" type="number" min="0" max="255" value="0">
+                <small>(0-255)</small>
+            </label>
+        </div>
+        <br>
+        <ul class="row">
+            <li>
+                <div>
+                    <label>
+                        <input id="start" type="radio" name="abc" checked>
+                        Start
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <label>
+                        <input type="radio" name="abc">
+                        End
+                    </label>
+                </div>
+            </li>
+        </ul>
+        <br>
+        <div class="row">
+            <label>Text:
+                <input id="text" type="text">
+            </label>
+        </div>
+        <br>
+        <div class="row">
+            <button type="button" onclick="addElement()">Add</button>
+            <button type="button" onclick="removeElement()">Delete</button>
+        </div>
+
+        <p id="result"></p>
+    </body>
+</html>

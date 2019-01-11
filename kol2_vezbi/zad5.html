@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise 5</title>
+        <style rel="stylesheet" type="text/css">
+            img {
+                width: 150px;
+                height: 150px;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script rel="script" type="application/javascript">
+            let speeds = [ 3000, 3500, 4000, 4500, 5000 ];
+
+            $( document ).ready( function() {
+                $( document ).click( function( event ) {
+                    let top = $( event )[ 0 ].originalEvent.pageY;
+                    let left = $( event )[ 0 ].originalEvent.pageX;
+
+                    $.each( $( "img" ), function( i, el ) {
+                        $( el ).animate( {
+                            top: `${ top - parseInt( $( this ).css( 'height' ) ) / 2 }px`,
+                            left: `${ left - parseInt( $( this ).css( 'width' ) ) / 2 }px`
+                        }, speeds[ i ] );
+                    } )
+                } );
+            } );
+        </script>
+    </head>
+    <body id="bla">
+        <img src="snowflake.png" alt="snegulka">
+        <img src="snowflake.png" alt="snegulka">
+        <img src="snowflake.png" alt="snegulka">
+        <img src="snowflake.png" alt="snegulka">
+        <img src="snowflake.png" alt="snegulka">
+    </body>
+</html>

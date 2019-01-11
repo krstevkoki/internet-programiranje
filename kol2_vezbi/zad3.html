@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercises 3</title>
+        <style rel="stylesheet" type="text/css">
+            div#result p {
+                width: 50px;
+                height: 50px;
+                float: left;
+            }
+
+            label, button {
+                cursor: pointer;
+            }
+        </style>
+        <script rel="script" type="application/javascript">
+            let input;
+            let delimiter;
+
+            function draw() {
+                let colors = document.getElementById( 'colors' ).value;
+                delimiter = document.getElementById( 'delimiter' ).value;
+                let result = document.getElementById( 'result' );
+
+                if ( colors === "" || delimiter === "" ) {
+                    alert( "Сите полиња се задолжителни!" );
+                    return;
+                }
+
+                while ( result.firstChild )
+                    result.removeChild( result.firstChild );
+
+                input = colors.split( delimiter );
+                for ( let i = 0; i < input.length; ++i ) {
+                    input[ i ] = input[ i ].trim();
+
+                    let p = document.createElement( 'p' );
+                    p.onclick = removeColor;
+                    p.style.backgroundColor = input[ i ];
+                    result.appendChild( p );
+                }
+            }
+
+            function removeColor( event ) {
+                let result = document.getElementById( 'result' );
+                let colors = document.getElementById( 'colors' );
+                let p = event.target;
+                let color = p.style.backgroundColor;
+
+                result.removeChild( p );
+                input.splice( input.indexOf( color ), 1 );
+
+                /*let temp = [];
+                for ( let i = 0, j = 0; i < input.length; ++i )
+                    if ( color !== input[ i ] )
+                        temp[ j++ ] = input[ i ];
+                input = temp;*/
+
+                colors.value = "";
+
+                for ( let i = 0; i < input.length; ++i ) {
+                    colors.value += `${ input[ i ] }`;
+                    if ( i !== input.length - 1 )
+                        colors.value += `${ delimiter }`;
+                }
+
+                // colors.value = input.toString();
+            }
+        </script>
+    </head>
+    <body>
+        <div class="row">
+            <label><p>Colors</p>
+                <input id="colors" type="text" name="colors">
+            </label>
+        </div>
+        <div class="row">
+            <label><p>Delimiter</p>
+                <input id="delimiter" type="text" name="delimiter">
+            </label>
+        </div>
+        <div class="row">
+            <p>
+                <button type="button" onclick="draw()">Draw</button>
+            </p>
+        </div>
+
+        <div id="result"></div>
+    </body>
+</html>
