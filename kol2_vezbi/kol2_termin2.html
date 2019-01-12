@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Zadaca 1 | Kolokvium 2</title>
+        <style rel="stylesheet" type="text/css">
+            #box {
+                width: 70px;
+                height: 70px;
+                position: absolute;
+                top: 40px;
+                left: 0;
+            }
+
+            button {
+                cursor: pointer;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script rel="script" type="application/javascript">
+            let colors = [ "red", "blue", "green" ];
+            let i = 1;
+            const distance = 10;
+
+            $( document ).ready( function() {
+                let box = $( "div#box" );
+                let maxHeight = parseFloat( $( "div.row" ).css( 'height' ) ) + 10;
+
+                if ( document.cookie ) {
+                    console.log( document.cookie );
+                    let left, top;
+
+                    for ( let cookie of document.cookie.split( ';' ) ) {
+                        let split = cookie.split( '=' );
+                        if ( split[ 0 ].trim() === 'left' )
+                            left = split[ 1 ];
+                        if ( split[ 0 ].trim() === 'top' )
+                            top = split[ 1 ];
+                    }
+
+                    box.css( {
+                        'backgroundColor': colors[ 0 ],
+                        'top': top,
+                        'left': left
+                    } );
+                } else {
+                    box.css( {
+                        'backgroundColor': colors[ 0 ],
+                        'top': `${ maxHeight }px`,
+                        'left': 0
+                    } );
+                    document.cookie = `top=${ maxHeight }px; expires=Tue, 31 Dec 2019 12:00:00; path=/`;
+                    document.cookie = "left=0; expires=Tue, 31 Dec 2019 12:00:00; path=/";
+                }
+
+                $( "div.row button" ).click( function() {
+                    let direction = $( this ).attr( 'name' );
+                    let newPos;
+
+                    if ( direction === 'up' ) {
+                        newPos = parseFloat( box.css( 'top' ) ) - distance;
+                        if ( newPos > maxHeight ) {
+                            document.cookie = `top=${ newPos }px; expires=Tue, 31 Dec 2019 12:00:00; path=/`;
+                            box.animate( {
+                                top: `${ newPos }`
+                            }, 500 );
+                        }
+                    } else if ( direction === 'down' ) {
+                        newPos = parseFloat( box.css( 'top' ) ) + distance;
+                        document.cookie = `top=${ newPos }px; expires=Tue, 31 Dec 2019 12:00:00; path=/`;
+                        box.animate( {
+                            top: `${ newPos }`
+                        }, 500 );
+                    } else if ( direction === 'right' ) {
+                        newPos = parseFloat( box.css( 'left' ) ) + distance;
+                        document.cookie = `left=${ newPos }px; expires=Tue, 31 Dec 2019 12:00:00; path=/`;
+                        box.animate( {
+                            left: `${ newPos }`
+                        }, 500 );
+                    } else if ( direction === 'left' ) {
+                        newPos = parseFloat( box.css( 'left' ) ) - distance;
+                        if ( newPos >= 0 ) {
+                            document.cookie = `left=${ newPos }px; expires=Tue, 31 Dec 2019 12:00:00; path=/`;
+                            box.animate( {
+                                left: `${ newPos }`
+                            }, 500 );
+                        }
+                    } else {  // no direction, change color
+                        box.css( 'backgroundColor', colors[ i++ ] );
+                        if ( i > colors.length - 1 )
+                            i = 0;
+                    }
+                } );
+            } );
+        </script>
+    </head>
+    <body>
+        <div class="row">
+            <button type="button" name="up">UP</button>
+            <button type="button" name="down">DOWN</button>
+            <button type="button" name="right">RIGHT</button>
+            <button type="button" name="left">LEFT</button>
+            <button type="button" name="change-color">CHANGE COLOR</button>
+        </div>
+        <div id="box"></div>
+    </body>
+</html>
