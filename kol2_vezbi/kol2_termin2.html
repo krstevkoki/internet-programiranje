@@ -24,6 +24,8 @@
             const distance = 10;
 
             $( document ).ready( function() {
+                createHTMLElements();
+
                 let box = $( "div#box" );
                 let maxHeight = parseFloat( $( "div.row" ).css( 'height' ) ) + 10;
 
@@ -93,16 +95,32 @@
                     }
                 } );
             } );
+
+            function createHTMLElements() {
+                let body = document.getElementById( 'body' );
+
+                let div = document.createElement( 'div' );
+                div.classList.add( 'row' );
+
+                let buttons = [ 'up', 'down', 'right', 'left', 'change-color' ];
+                for ( let i = 0; i < buttons.length; ++i ) {
+                    let button = document.createElement( 'button' );
+                    button.setAttribute( 'type', 'button' );
+                    button.setAttribute( 'name', buttons[ i ].toLowerCase() );
+                    if ( i === buttons.length - 1 )
+                        button.innerText = "CHANGE COLOR";
+                    else
+                        button.innerText = buttons[ i ].toUpperCase();
+
+                    div.appendChild( button );
+                }
+                body.appendChild( div );
+
+                div = document.createElement( 'div' );
+                div.setAttribute( 'id', 'box' );
+                body.appendChild( div );
+            }
         </script>
     </head>
-    <body>
-        <div class="row">
-            <button type="button" name="up">UP</button>
-            <button type="button" name="down">DOWN</button>
-            <button type="button" name="right">RIGHT</button>
-            <button type="button" name="left">LEFT</button>
-            <button type="button" name="change-color">CHANGE COLOR</button>
-        </div>
-        <div id="box"></div>
-    </body>
+    <body id="body"></body>
 </html>
